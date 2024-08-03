@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react'
 import { RoomProvider, ClientSideSuspense } from "@liveblocks/react/suspense";
 import { Editor } from '@/components/editor/Editor';
