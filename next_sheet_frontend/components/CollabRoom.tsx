@@ -9,6 +9,8 @@ import { Input } from './ui/input';
 import Image from 'next/image';
 import { updateDocument } from '@/lib/actions/room.actions';
 import Loader from './Loader';
+import ActiveCollaborators from './ui/ActiveCollaborators';
+import ShareModal from './ShareModal';
 
 
 const CollabRoom = ({ roomId, roomMetadata, users, currentUserType}: CollaborativeRoomProps) => {
@@ -81,6 +83,8 @@ const CollabRoom = ({ roomId, roomMetadata, users, currentUserType}: Collaborati
                       {loading && <p className='text-sm text-gray-400'>Saving...</p>}
                     </div>
                     <div className='flex w-full flex-1 justify-end gap-2 sm:gap-3'>
+                      <ActiveCollaborators />
+                      <ShareModal roomId={roomId} collaborators={users} creatorId={roomMetadata.creatorId} currentUserType={currentUserType}/>
                       <SignedOut>
                       <SignInButton />
                       </SignedOut>
