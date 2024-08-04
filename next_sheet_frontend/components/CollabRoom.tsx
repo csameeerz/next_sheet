@@ -11,7 +11,7 @@ import { updateDocument } from '@/lib/actions/room.actions';
 import Loader from './Loader';
 
 
-const CollabRoom = ({ roomId, roomMetadata}: CollaborativeRoomProps) => {
+const CollabRoom = ({ roomId, roomMetadata, users, currentUserType}: CollaborativeRoomProps) => {
   const [editing, setEditing] = useState(false);
   const [loading, setLoading] = useState(false);
   const [documentTitle, setDocumentTitle] = useState(roomMetadata.title);
@@ -37,8 +37,6 @@ const CollabRoom = ({ roomId, roomMetadata}: CollaborativeRoomProps) => {
     setLoading(false);
     }
   }
-
-  const currentUserType = 'editor';
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
@@ -91,7 +89,7 @@ const CollabRoom = ({ roomId, roomMetadata}: CollaborativeRoomProps) => {
                       </SignedIn>
                     </div>
                 </Header>
-                <Editor />
+                <Editor roomId={roomId} currentUserType={currentUserType}/>
             </div>
         </ClientSideSuspense>
     </RoomProvider>
